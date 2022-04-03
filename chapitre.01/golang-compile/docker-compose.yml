@@ -1,0 +1,12 @@
+version: '2'
+services:
+  golang:
+    restart: always
+    container_name: golang-build
+    image: golang:1.14-alpine
+    #build: .
+    volumes:
+        - ./src:/var/lib/golang/src
+    environment:
+        - GOARCH=386
+    command: ["go", " build", " -v"]

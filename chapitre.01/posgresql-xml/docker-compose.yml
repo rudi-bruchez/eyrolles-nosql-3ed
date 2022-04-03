@@ -1,0 +1,23 @@
+version: '2'
+services:
+  postgresql:
+    restart: always
+    container_name: postgres
+    image: postgres:latest
+    #image: sameersbn/postgresql:latest
+    #build: .
+    ports:
+        - "5432:5432"
+    volumes:
+        - ./pg_data:/var/lib/postgresql/data
+    environment:
+        - POSTGRES_USER=rudi
+        - POSTGRES_PASSWORD=docker
+        - POSTGRES_DB=xml
+        #- DB_USER=rudi
+        #- DB_PASS=docker
+        #- DB_NAME=xml
+
+#volumes:
+#    pg_data:
+#        external: true

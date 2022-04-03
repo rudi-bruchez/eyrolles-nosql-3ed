@@ -1,0 +1,6 @@
+version: '3'
+services:
+  redis_velib:
+    container_name: redis-velib
+    build: .
+    image: redis-velib

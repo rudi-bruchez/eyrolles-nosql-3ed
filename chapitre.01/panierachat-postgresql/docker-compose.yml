@@ -1,0 +1,28 @@
+version: '2'
+services:
+  postgresql:
+    restart: always
+    container_name: panier-achat-database
+    build: ./postgresql
+    image: panier-achat-database
+    environment:
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=ecommerce
+    ports:
+      - "5432:5432"
+    networks:
+      - ecommerce_network
+  
+  panier_achat:
+    container_name: panier-achat-pg
+    build: .
+    image: panier-achat-pg
+    depends_on: [postgresql]
+    restart: on-failure:10 # pour laisser le temps à PostgreSQL de démarrer
+    networks:
+      - ecommerce_network
+
+networks:
+  ecommerce_network:
+    driver: bridge

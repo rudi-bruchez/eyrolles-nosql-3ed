@@ -1,0 +1,6 @@
+version: '3'
+services:
+  panier_achat:
+    container_name: panier-achat
+    build: .
+    image: panier-achat
